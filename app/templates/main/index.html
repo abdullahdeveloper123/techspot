@@ -1,0 +1,443 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>techSpot — Modern Shop</title>
+    <meta name="description" content="A modern, sleek, softly-dark e-commerce experience.">
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <!-- Font Awesome SVG+JS (auto-replaces <i> with inline SVG) -->
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/js/all.min.js" integrity="sha512-yQ1bYpJrX6pD2k8r8c+o1r3Zq4qj4Yl3p3XzT7kq0QxJmW1a1KQ8LxwM8j9xJmNQe8y4l6gNn6dO3nQ8s3g2xw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- Font Awesome CSS fallback -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" referrerpolicy="no-referrer" />
+
+    <!-- Google Font: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../../static/css/styles.css">
+  </head>
+  <body>
+    <!-- Floating gradient background orbs -->
+    <div class="bg-orb orb-1"></div>
+    <div class="bg-orb orb-2"></div>
+    <div class="bg-orb orb-3"></div>
+
+    <header class="position-sticky top-0 z-3 shadow-none bg-translucent backdrop-blur-sm">
+      <nav class="navbar navbar-expand-lg py-3">
+        <div class="container-xxl">
+          <a class="navbar-brand d-flex align-items-center gap-2" href="{% url 'home' %}">
+            <span class="brand-mark rounded-3 d-inline-flex align-items-center justify-content-center">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2L20 7V17L12 22L4 17V7L12 2Z" fill="currentColor"/></svg>
+            </span>
+            <span class="fw-semibold">techSpot</span>
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="mainNav">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center gap-lg-2">
+              <li class="nav-item"><a class="nav-link" href="#new">New</a></li>
+              <li class="nav-item"><a class="nav-link" href="#trending">Trending</a></li>
+              <li class="nav-item"><a class="nav-link" href="#categories">Categories</a></li>
+              <li class="nav-item"><a class="nav-link" href="#newsletter">Newsletter</a></li>
+              <li class="nav-item"><a class="nav-link" href="{% url 'shop' %}">Shop</a></li>
+              <li class="nav-item"><a class="nav-link" href="{% url 'cart' %}">Cart</a></li>
+              <li class="nav-item"><a class="nav-link" href="{% url 'profile' %}">Profile</a></li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">More</a>
+                <ul class="dropdown-menu dropdown-menu-end rounded-4 overflow-hidden">
+                  <li><a class="dropdown-item" href="#products">Products</a></li>
+                  <li><a class="dropdown-item" href="#testimonials">Testimonials</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="#footer">Support</a></li>
+                </ul>
+              </li>
+              <li class="nav-item ms-lg-2">
+                <button id="themeToggle" class="btn btn-outline-light rounded-pill px-3 py-2 d-flex align-items-center gap-2">
+                  <i class="fa-solid fa-moon theme-icon" aria-hidden="true"></i>
+                  <span class="d-none d-sm-inline">Dark</span>
+                </button>
+              </li>
+              <li class="nav-item ms-lg-1">
+                <a class="btn btn-primary rounded-pill px-3 py-2" href="{% url 'shop' %}">Shop</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <!-- Hero -->
+      <section class="hero py-5 py-lg-6 position-relative overflow-hidden">
+        <div class="container-xxl">
+          <div class="row align-items-center g-4 g-lg-5">
+            <div class="col-12 col-lg-6">
+              <div class="hero-kicker text-gradient mb-2">Next‑gen gadgets</div>
+              <h1 class="display-4 fw-extrabold mb-3">Shop the future. Soft, sleek, irresistibly smooth.</h1>
+              <p class="lead text-secondary-contrast mb-4">Curated tech with a soft dark aesthetic. Rounded, refined, and built to delight. Experience ambient contrast, subtle glass, and silky motion.</p>
+              <div class="d-flex flex-wrap gap-2">
+                <a href="#products" class="btn btn-primary btn-lg rounded-pill px-4">Explore products</a>
+                <a href="#trending" class="btn btn-outline-light btn-lg rounded-pill px-4">See trending</a>
+              </div>
+              <div class="d-flex align-items-center gap-4 mt-4 text-secondary-contrast small">
+                <div class="d-flex align-items-center gap-2"><span class="badge bg-success-subtle text-success rounded-pill">4.9</span> Customer rating</div>
+                <div>Free shipping over $50</div>
+                <div>30‑day returns</div>
+              </div>
+            </div>
+            <div class="col-12 col-lg-6">
+              <div class="hero-media card glass rounded-5 p-3 p-md-4 reveal-up">
+                <div class="ratio ratio-16x9 rounded-4 overflow-hidden">
+                  <img src="https://images.unsplash.com/photo-1542751110-97427bbecf20?q=80&w=1600&auto=format&fit=crop" class="object-fit-cover scale-on-hover" alt="Sleek tech gadgets on a dark background">
+                </div>
+                <div class="d-flex justify-content-between align-items-center mt-3">
+                  <div class="d-flex align-items-center gap-2">
+                    <span class="dot dot-success"></span>
+                    <span class="text-secondary-contrast">In stock</span>
+                  </div>
+                  <a href="#" class="btn btn-outline-light rounded-pill px-3">Quick view</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Categories -->
+      <section id="categories" class="py-5 py-lg-6">
+        <div class="container-xxl">
+          <div class="d-flex justify-content-between align-items-end mb-4">
+            <h2 class="h3 fw-bold m-0">Browse by category</h2>
+            <a href="#" class="link-light text-decoration-none">View all</a>
+          </div>
+          <div class="row g-3 g-lg-4">
+            <div class="col-6 col-md-4 col-lg-3">
+              <a class="card category-card rounded-4 p-4 reveal-up" href="#products">
+                <div class="icon-wrap"><i class="fa-solid fa-laptop"></i></div>
+                <div class="mt-3 fw-semibold">Laptops</div>
+                <div class="text-secondary-contrast small">Portable powerhouses</div>
+              </a>
+            </div>
+            <div class="col-6 col-md-4 col-lg-3">
+              <a class="card category-card rounded-4 p-4 reveal-up" href="#products">
+                <div class="icon-wrap"><i class="fa-solid fa-headphones"></i></div>
+                <div class="mt-3 fw-semibold">Audio</div>
+                <div class="text-secondary-contrast small">Crystal clear sound</div>
+              </a>
+            </div>
+            <div class="col-6 col-md-4 col-lg-3">
+              <a class="card category-card rounded-4 p-4 reveal-up" href="#products">
+                <div class="icon-wrap"><i class="fa-solid fa-clock"></i></div>
+                <div class="mt-3 fw-semibold">Wearables</div>
+                <div class="text-secondary-contrast small">Always connected</div>
+              </a>
+            </div>
+            <div class="col-6 col-md-4 col-lg-3">
+              <a class="card category-card rounded-4 p-4 reveal-up" href="#products">
+                <div class="icon-wrap"><i class="fa-solid fa-display"></i></div>
+                <div class="mt-3 fw-semibold">Monitors</div>
+                <div class="text-secondary-contrast small">Vivid and smooth</div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Trending / Featured products -->
+      <section id="trending" class="py-5 py-lg-6">
+        <div class="container-xxl">
+          <div class="d-flex justify-content-between align-items-end mb-4">
+            <h2 class="h3 fw-bold m-0">Trending now</h2>
+            <div class="d-none d-md-flex align-items-center gap-2">
+              <button class="btn btn-outline-light btn-sm rounded-pill carousel-prev" aria-label="Previous"><i class="fa-solid fa-chevron-left"></i></button>
+              <button class="btn btn-outline-light btn-sm rounded-pill carousel-next" aria-label="Next"><i class="fa-solid fa-chevron-right"></i></button>
+            </div>
+          </div>
+
+          <div class="row g-3 g-lg-4" id="products">
+            <!-- Product Card -->
+            <div class="col-12 col-sm-6 col-lg-3">
+              <div class="card product-card rounded-4 overflow-hidden reveal-up">
+                <div class="product-media ratio ratio-4x3">
+                  <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?q=80&w=1600&auto=format&fit=crop" class="object-fit-cover" alt="Laptop">
+                </div>
+                <div class="p-3">
+                  <div class="d-flex justify-content-between align-items-start">
+                    <h3 class="h6 m-0">Nebula Pro 14”</h3>
+                    <span class="price fw-semibold">$1,299</span>
+                  </div>
+                  <div class="text-secondary-contrast small mt-1">M2 • 16GB • 1TB</div>
+                  <div class="d-flex gap-2 mt-3">
+                    <button class="btn btn-primary btn-sm rounded-pill flex-grow-1">Add to cart</button>
+                    <button class="btn btn-outline-light btn-sm rounded-pill" aria-label="Wishlist"><i class="fa-regular fa-heart"></i></button>
+                    <button class="btn btn-outline-light btn-sm rounded-pill show-details"
+                            data-title="Nebula Pro 14”"
+                            data-price="$1,299"
+                            data-desc="A compact powerhouse with incredible battery life and a color-accurate display. Perfect for creators and travelers."
+                            data-image="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?q=80&w=1600&auto=format&fit=crop">
+                      Show details
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-lg-3">
+              <div class="card product-card rounded-4 overflow-hidden reveal-up">
+                <div class="product-media ratio ratio-4x3">
+                  <img src="https://images.unsplash.com/photo-1518444054140-9e33c6fedfac?q=80&w=1600&auto=format&fit=crop" class="object-fit-cover" alt="Headphones">
+                </div>
+                <div class="p-3">
+                  <div class="d-flex justify-content-between align-items-start">
+                    <h3 class="h6 m-0">Aero ANC Max</h3>
+                    <span class="price fw-semibold">$299</span>
+                  </div>
+                  <div class="text-secondary-contrast small mt-1">Spatial • 40h</div>
+                  <div class="d-flex gap-2 mt-3">
+                    <button class="btn btn-primary btn-sm rounded-pill flex-grow-1">Add to cart</button>
+                    <button class="btn btn-outline-light btn-sm rounded-pill" aria-label="Wishlist"><i class="fa-regular fa-heart"></i></button>
+                    <button class="btn btn-outline-light btn-sm rounded-pill show-details"
+                            data-title="Aero ANC Max"
+                            data-price="$299"
+                            data-desc="Immersive sound with adaptive noise cancellation and studio-grade tuning. Foldable and comfortable for long sessions."
+                            data-image="https://images.unsplash.com/photo-1518444054140-9e33c6fedfac?q=80&w=1600&auto=format&fit=crop">
+                      Show details
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-lg-3">
+              <div class="card product-card rounded-4 overflow-hidden reveal-up">
+                <div class="product-media ratio ratio-4x3">
+                  <img src="https://images.unsplash.com/photo-1518779578993-ec3579fee39f?q=80&w=1600&auto=format&fit=crop" class="object-fit-cover" alt="Smartwatch">
+                </div>
+                <div class="p-3">
+                  <div class="d-flex justify-content-between align-items-start">
+                    <h3 class="h6 m-0">Pulse 3</h3>
+                    <span class="price fw-semibold">$219</span>
+                  </div>
+                  <div class="text-secondary-contrast small mt-1">AMOLED • GPS</div>
+                  <div class="d-flex gap-2 mt-3">
+                    <button class="btn btn-primary btn-sm rounded-pill flex-grow-1">Add to cart</button>
+                    <button class="btn btn-outline-light btn-sm rounded-pill" aria-label="Wishlist"><i class="fa-regular fa-heart"></i></button>
+                    <button class="btn btn-outline-light btn-sm rounded-pill show-details"
+                            data-title="Pulse 3"
+                            data-price="$219"
+                            data-desc="Track your health with precision sensors, advanced sleep insights, and week-long battery in a sleek chassis."
+                            data-image="https://images.unsplash.com/photo-1518779578993-ec3579fee39f?q=80&w=1600&auto=format&fit=crop">
+                      Show details
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-lg-3">
+              <div class="card product-card rounded-4 overflow-hidden reveal-up">
+                <div class="product-media ratio ratio-4x3">
+                  <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1600&auto=format&fit=crop" class="object-fit-cover" alt="Monitor">
+                </div>
+                <div class="p-3">
+                  <div class="d-flex justify-content-between align-items-start">
+                    <h3 class="h6 m-0">VividCurve 34”</h3>
+                    <span class="price fw-semibold">$799</span>
+                  </div>
+                  <div class="text-secondary-contrast small mt-1">144Hz • QLED</div>
+                  <div class="d-flex gap-2 mt-3">
+                    <button class="btn btn-primary btn-sm rounded-pill flex-grow-1">Add to cart</button>
+                    <button class="btn btn-outline-light btn-sm rounded-pill" aria-label="Wishlist"><i class="fa-regular fa-heart"></i></button>
+                    <button class="btn btn-outline-light btn-sm rounded-pill show-details"
+                            data-title="VividCurve 34”"
+                            data-price="$799"
+                            data-desc="Ultrawide immersion with vibrant colors and silky refresh rate. Elevate your workspace and play."
+                            data-image="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1600&auto=format&fit=crop">
+                      Show details
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Details Modal -->
+      <div id="detailsOverlay" class="details-overlay" aria-hidden="true" role="dialog" aria-modal="true">
+        <div class="details-modal rounded-5 glass">
+          <button class="btn btn-outline-light rounded-pill details-close" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+          <div class="details-grid">
+            <div class="details-media">
+              <img id="detailsImage" alt="Product image" />
+            </div>
+            <div class="details-content">
+              <div class="small text-secondary-contrast mb-1">Quick look</div>
+              <h3 id="detailsTitle" class="h4 fw-bold mb-1">Title</h3>
+              <div id="detailsPrice" class="h5 text-gradient mb-3">$0.00</div>
+              <p id="detailsDesc" class="mb-4">Description goes here.</p>
+              <div class="d-flex gap-2">
+                <button class="btn btn-primary rounded-pill px-4"><i class="fa-solid fa-cart-plus me-2"></i>Add to cart</button>
+                <button class="btn btn-outline-light rounded-pill px-4"><i class="fa-regular fa-heart me-2"></i>Wishlist</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Testimonials Carousel -->
+      <section id="testimonials" class="py-5 py-lg-6">
+        <div class="container-xxl">
+          <div class="d-flex justify-content-between align-items-end mb-3">
+            <h2 class="h3 fw-bold m-0">What customers say</h2>
+            <div class="d-none d-md-flex align-items-center gap-2">
+              <button class="btn btn-outline-light btn-sm rounded-pill rc-prev" aria-label="Previous"><i class="fa-solid fa-chevron-left"></i></button>
+              <button class="btn btn-outline-light btn-sm rounded-pill rc-next" aria-label="Next"><i class="fa-solid fa-chevron-right"></i></button>
+            </div>
+          </div>
+
+          <div class="rc" id="reviewCarousel">
+            <div class="rc-viewport">
+              <div class="rc-track">
+                <div class="rc-slide">
+                  <div class="card rounded-4 h-100 p-4">
+                    <div class="d-flex align-items-center gap-2 mb-2">
+                      <span class="badge bg-success-subtle text-success rounded-pill">4.9</span>
+                      <span class="text-secondary-contrast">2.5k+ reviews</span>
+                    </div>
+                    <p class="mb-0">“Probably the smoothest checkout and the most satisfying unboxing I’ve had. The design is stunning and the motion is pure butter.”</p>
+                    <div class="mt-3 small text-secondary-contrast">— Alex, Designer</div>
+                  </div>
+                </div>
+                <div class="rc-slide">
+                  <div class="card rounded-4 h-100 p-4">
+                    <p class="mb-0">“Quality, speed, and a vibe that feels futuristic.”</p>
+                    <div class="mt-3 small text-secondary-contrast">— Priya</div>
+                  </div>
+                </div>
+                <div class="rc-slide">
+                  <div class="card rounded-4 h-100 p-4">
+                    <p class="mb-0">“The soft dark theme is so easy on the eyes. Love the subtle animations.”</p>
+                    <div class="mt-3 small text-secondary-contrast">— Marco</div>
+                  </div>
+                </div>
+                <div class="rc-slide">
+                  <div class="card rounded-4 h-100 p-4">
+                    <p class="mb-0">“Incredible customer service and fast delivery. The product feels premium.”</p>
+                    <div class="mt-3 small text-secondary-contrast">— Sam</div>
+                  </div>
+                </div>
+                <div class="rc-slide">
+                  <div class="card rounded-4 h-100 p-4">
+                    <p class="mb-0">“Everything feels intentionally designed. I keep coming back.”</p>
+                    <div class="mt-3 small text-secondary-contrast">— Lina</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="d-flex justify-content-center gap-2 mt-3 rc-dots" aria-label="Carousel Pagination"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Newsletter -->
+      <section id="newsletter" class="py-5 py-lg-6">
+        <div class="container-xxl">
+          <div class="row g-3 g-lg-4 align-items-center">
+            <div class="col-12 col-lg-7">
+              <div class="rounded-4 p-4 p-md-5 glass reveal-up">
+                <h2 class="h3 fw-bold">Stay updated with drops and deals</h2>
+                <p class="text-secondary-contrast">Join our newsletter to get curated picks, early access, and limited edits.</p>
+                <form class="row g-2 g-sm-3" onsubmit="event.preventDefault(); document.getElementById('newsSuccess').classList.remove('d-none'); this.reset();">
+                  <div class="col-12 col-sm-8">
+                    <input type="email" class="form-control form-control-lg rounded-pill" placeholder="Your email" required>
+                  </div>
+                  <div class="col-12 col-sm-auto">
+                    <button class="btn btn-primary btn-lg rounded-pill px-4 w-100" type="submit">Subscribe</button>
+                  </div>
+                </form>
+                <div id="newsSuccess" class="text-success small mt-2 d-none">Thanks! You’re on the list.</div>
+              </div>
+            </div>
+            <div class="col-12 col-lg-5">
+              <div class="rounded-4 p-4 p-md-5 card reveal-up">
+                <h3 class="h5 fw-semibold">Perks</h3>
+                <ul class="list-unstyled m-0 mt-2 d-grid gap-2">
+                  <li class="d-flex align-items-center gap-2"><span class="dot dot-success"></span> Member-only pricing</li>
+                  <li class="d-flex align-items-center gap-2"><span class="dot dot-success"></span> Early product access</li>
+                  <li class="d-flex align-items-center gap-2"><span class="dot dot-success"></span> Free extended returns</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer id="footer" class="py-5 mt-4 border-top border-light-subtle">
+      <div class="container-xxl">
+        <div class="row g-4">
+          <div class="col-12 col-md-6 col-lg-4">
+            <div class="d-flex align-items-center gap-2 mb-2">
+              <span class="brand-mark rounded-3 d-inline-flex align-items-center justify-content-center">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2L20 7V17L12 22L4 17V7L12 2Z" fill="currentColor"/></svg>
+              </span>
+              <span class="fw-semibold">techSpot</span>
+            </div>
+            <div class="text-secondary-contrast small">Softly dark, effortlessly modern. © <span id="year"></span></div>
+          </div>
+          <div class="col-6 col-lg-2">
+            <div class="fw-semibold mb-2">Shop</div>
+            <ul class="list-unstyled text-secondary-contrast small d-grid gap-1 m-0">
+              <li><a class="link-light text-decoration-none" href="#">Laptops</a></li>
+              <li><a class="link-light text-decoration-none" href="#">Audio</a></li>
+              <li><a class="link-light text-decoration-none" href="#">Wearables</a></li>
+              <li><a class="link-light text-decoration-none" href="#">Monitors</a></li>
+            </ul>
+          </div>
+          <div class="col-6 col-lg-2">
+            <div class="fw-semibold mb-2">Company</div>
+            <ul class="list-unstyled text-secondary-contrast small d-grid gap-1 m-0">
+              <li><a class="link-light text-decoration-none" href="#">About</a></li>
+              <li><a class="link-light text-decoration-none" href="#">Careers</a></li>
+              <li><a class="link-light text-decoration-none" href="#">Blog</a></li>
+            </ul>
+          </div>
+          <div class="col-12 col-lg-4">
+            <div class="fw-semibold mb-2">Get the latest</div>
+            <form class="d-flex gap-2" onsubmit="event.preventDefault(); alert('Thanks for subscribing!');">
+              <input type="email" class="form-control rounded-pill" placeholder="Email address" required>
+              <button class="btn btn-outline-light rounded-pill px-3" type="submit">Join</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="../../static/js/app.js"></script>
+    <!-- Chicku chatbot UI -->
+    <button id="chickuLauncher" class="chicku-launcher"><i class="fa-solid fa-robot"></i><span class="d-none d-sm-inline">Chat with Chicku</span></button>
+    <div id="chickuPanel" class="chicku-panel" aria-hidden="true" role="dialog" aria-modal="true">
+      <div class="chicku-header">
+        <strong>Chicku</strong>
+        <button id="chickuClose" class="btn btn-outline-light btn-sm rounded-pill"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div id="chickuBody" class="chicku-body">
+        <div class="chicku-msg bot">Hi! I’m Chicku. Ask me anything about our catalog.</div>
+      </div>
+      <form id="chickuForm" class="chicku-input d-flex gap-2" onsubmit="event.preventDefault();">
+        <input id="chickuInput" class="form-control rounded-pill" placeholder="Type a message...">
+        <button class="btn btn-primary rounded-pill" type="submit">Send</button>
+      </form>
+    </div>
+  </body>
+  </html>
+
+

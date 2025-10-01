@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>techSpot — Shop All</title>
+  <meta name="description" content="Browse the full techSpot catalog with a soft dark aesthetic.">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/js/all.min.js"
+    integrity="sha512-yQ1bYpJrX6pD2k8r8c+o1r3Zq4qj4Yl3p3XzT7kq0QxJmW1a1KQ8LxwM8j9xJmNQe8y4l6gNn6dO3nQ8s3g2xw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    referrerpolicy="no-referrer" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="../../static/css/styles.css">
+</head>
+
+<body>
+  <div class="bg-orb orb-1"></div>
+  <div class="bg-orb orb-2"></div>
+  <div class="bg-orb orb-3"></div>
+
+  <header class="position-sticky top-0 z-3 shadow-none bg-translucent backdrop-blur-sm">
+    <nav class="navbar navbar-expand-lg py-3">
+      <div class="container-xxl">
+        <a class="navbar-brand d-flex align-items-center gap-2" href="{% url 'home' %}">
+          <span class="brand-mark rounded-3 d-inline-flex align-items-center justify-content-center">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 2L20 7V17L12 22L4 17V7L12 2Z" fill="currentColor" />
+            </svg>
+          </span>
+          <span class="fw-semibold">techSpot</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
+          aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="mainNav">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center gap-lg-2">
+            <li class="nav-item"><a class="nav-link" href="#new">New</a></li>
+            <li class="nav-item"><a class="nav-link" href="#trending">Trending</a></li>
+            <li class="nav-item"><a class="nav-link" href="#categories">Categories</a></li>
+            <li class="nav-item"><a class="nav-link" href="#newsletter">Newsletter</a></li>
+            <li class="nav-item"><a class="nav-link" href="{% url 'shop' %}">Shop</a></li>
+            <li class="nav-item"><a class="nav-link" href="{% url 'cart' %}">Cart</a></li>
+            <li class="nav-item"><a class="nav-link" href="{% url 'profile' %}">Profile</a></li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">More</a>
+              <ul class="dropdown-menu dropdown-menu-end rounded-4 overflow-hidden">
+                <li><a class="dropdown-item" href="#products">Products</a></li>
+                <li><a class="dropdown-item" href="#testimonials">Testimonials</a></li>
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
+                <li><a class="dropdown-item" href="#footer">Support</a></li>
+              </ul>
+            </li>
+            <li class="nav-item ms-lg-2">
+              <button id="themeToggle"
+                class="btn btn-outline-light rounded-pill px-3 py-2 d-flex align-items-center gap-2">
+                <i class="fa-solid fa-moon theme-icon" aria-hidden="true"></i>
+                <span class="d-none d-sm-inline">Dark</span>
+              </button>
+            </li>
+            <li class="nav-item ms-lg-1">
+              <a class="btn btn-primary rounded-pill px-3 py-2" href="{% url 'shop' %}">Shop</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="py-5 py-lg-6">
+      <div class="container-xxl">
+        <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-4">
+          <div>
+            <div class="text-gradient mb-1">All products</div>
+            <h1 class="h2 fw-extrabold m-0">Shop the full collection</h1>
+          </div>
+          <form class="d-flex gap-2" role="search" onsubmit="event.preventDefault();">
+            <input id="catalogSearch" class="form-control rounded-pill" type="search" placeholder="Search products"
+              aria-label="Search">
+            <select id="catalogSort" class="form-select rounded-pill" style="max-width: 180px;">
+              <option selected>Sort: Featured</option>
+              <option>Price: Low to High</option>
+              <option>Price: High to Low</option>
+              <option>Newest</option>
+            </select>
+          </form>
+        </div>
+
+        <div class="d-flex flex-wrap gap-2 mb-4" id="catalogFilters">
+          <button class="btn btn-outline-light btn-sm rounded-pill active" data-filter="all">All</button>
+          <button class="btn btn-outline-light btn-sm rounded-pill" data-filter="laptops"><i
+              class="fa-solid fa-laptop me-2"></i>Laptops</button>
+          <button class="btn btn-outline-light btn-sm rounded-pill" data-filter="audio"><i
+              class="fa-solid fa-headphones me-2"></i>Audio</button>
+          <button class="btn btn-outline-light btn-sm rounded-pill" data-filter="wearables"><i
+              class="fa-solid fa-clock me-2"></i>Wearables</button>
+          <button class="btn btn-outline-light btn-sm rounded-pill" data-filter="monitors"><i
+              class="fa-solid fa-display me-2"></i>Monitors</button>
+        </div>
+
+        <div class="row g-3 g-lg-4" id="catalog">
+          {% for q in data %}
+
+
+
+          <!-- 1 -->
+          <div class="col-6 col-md-4 col-lg-3" data-category="laptops" data-price="1299" data-new="true">
+            <div class="card product-card rounded-4 overflow-hidden reveal-up">
+              <div class="product-media ratio ratio-4x3">
+                <img src="{{q.img}}"
+                  class="object-fit-cover" alt="Laptop">
+              </div>
+              <div class="p-3">
+                <div class="d-flex justify-content-between align-items-start">
+                  <h3 class="h6 m-0">{{q.name}}</h3>
+                  <span class="price fw-semibold">${{q.price}}</span>
+                </div>
+                <div class="text-secondary-contrast small mt-1">{{q.specs}}</div>
+                <div class="d-flex gap-2 mt-3">
+                  <button class="btn btn-primary btn-sm rounded-pill flex-grow-1">Add to cart</button>
+                  <button class="btn btn-outline-light btn-sm rounded-pill" aria-label="Wishlist"><i
+                      class="fa-regular fa-heart"></i></button>
+                  <button class="btn btn-outline-light btn-sm rounded-pill show-details" data-title="Nebula Pro 14”"
+                    data-price="$1,299"
+                    data-desc="A compact powerhouse with incredible battery life and a color-accurate display."
+                    data-image="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?q=80&w=1600&auto=format&fit=crop">Show
+                    details</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+
+        <div class="d-flex justify-content-center mt-4">
+          <nav aria-label="Catalog pagination">
+            <ul class="pagination pagination-sm mb-0">
+              <li class="page-item disabled"><a class="page-link" href="#" tabindex="-1" aria-disabled="true">Prev</a>
+              </li>
+              <li class="page-item active"><a class="page-link" href="#">1</a></li>
+              <li class="page-item"><a class="page-link" href="#">2</a></li>
+              <li class="page-item"><a class="page-link" href="#">3</a></li>
+              <li class="page-item"><a class="page-link" href="#">Next</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="footer" class="py-5 mt-4 border-top border-light-subtle">
+    <div class="container-xxl">
+      <div class="row g-4">
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="d-flex align-items-center gap-2 mb-2">
+            <span class="brand-mark rounded-3 d-inline-flex align-items-center justify-content-center">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2L20 7V17L12 22L4 17V7L12 2Z" fill="currentColor" />
+              </svg>
+            </span>
+            <span class="fw-semibold">techSpot</span>
+          </div>
+          <div class="text-secondary-contrast small">Softly dark, effortlessly modern. © <span id="year"></span></div>
+        </div>
+        <div class="col-6 col-lg-2">
+          <div class="fw-semibold mb-2">Shop</div>
+          <ul class="list-unstyled text-secondary-contrast small d-grid gap-1 m-0">
+            <li><a class="link-light text-decoration-none" href="#">Laptops</a></li>
+            <li><a class="link-light text-decoration-none" href="#">Audio</a></li>
+            <li><a class="link-light text-decoration-none" href="#">Wearables</a></li>
+            <li><a class="link-light text-decoration-none" href="#">Monitors</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-lg-2">
+          <div class="fw-semibold mb-2">Company</div>
+          <ul class="list-unstyled text-secondary-contrast small d-grid gap-1 m-0">
+            <li><a class="link-light text-decoration-none" href="#">About</a></li>
+            <li><a class="link-light text-decoration-none" href="#">Careers</a></li>
+            <li><a class="link-light text-decoration-none" href="#">Blog</a></li>
+          </ul>
+        </div>
+        <div class="col-12 col-lg-4">
+          <div class="fw-semibold mb-2">Get the latest</div>
+          <form class="d-flex gap-2" onsubmit="event.preventDefault(); alert('Thanks for subscribing!');">
+            <input type="email" class="form-control rounded-pill" placeholder="Email address" required>
+            <button class="btn btn-outline-light rounded-pill px-3" type="submit">Join</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Details Modal (shared with index.js logic) -->
+  <div id="detailsOverlay" class="details-overlay" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="details-modal rounded-5 glass">
+      <button class="btn btn-outline-light rounded-pill details-close" aria-label="Close"><i
+          class="fa-solid fa-xmark"></i></button>
+      <div class="details-grid">
+        <div class="details-media">
+          <img id="detailsImage" alt="Product image" />
+        </div>
+        <div class="details-content">
+          <div class="small text-secondary-contrast mb-1">Quick look</div>
+          <h3 id="detailsTitle" class="h4 fw-bold mb-1">Title</h3>
+          <div id="detailsPrice" class="h5 text-gradient mb-3">$0.00</div>
+          <p id="detailsDesc" class="mb-4">Description goes here.</p>
+          <div class="d-flex gap-2">
+            <button class="btn btn-primary rounded-pill px-4"><i class="fa-solid fa-cart-plus me-2"></i>Add to
+              cart</button>
+            <button class="btn btn-outline-light rounded-pill px-4"><i
+                class="fa-regular fa-heart me-2"></i>Wishlist</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+  <script src="../../static/js/app.js"></script>
+  <!-- Chicku chatbot UI -->
+  <button id="chickuLauncher" class="chicku-launcher"><i class="fa-solid fa-robot"></i><span
+      class="d-none d-sm-inline">Chat with Chicku</span></button>
+  <div id="chickuPanel" class="chicku-panel" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="chicku-header">
+      <strong>Chicku</strong>
+      <button id="chickuClose" class="btn btn-outline-light btn-sm rounded-pill"><i
+          class="fa-solid fa-xmark"></i></button>
+    </div>
+    <div id="chickuBody" class="chicku-body">
+      <div class="chicku-msg bot">Hi! I’m Chicku. Ask me anything about our catalog.</div>
+    </div>
+    <form id="chickuForm" class="chicku-input d-flex gap-2" onsubmit="event.preventDefault();">
+      <input id="chickuInput" class="form-control rounded-pill" placeholder="Type a message...">
+      <button class="btn btn-primary rounded-pill" type="submit">Send</button>
+    </form>
+  </div>
+</body>
+
+</html>

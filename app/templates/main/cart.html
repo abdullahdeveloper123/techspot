@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>techSpot — Your Cart</title>
+    <meta name="description" content="Review your cart and checkout with a soft dark aesthetic.">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/js/all.min.js" integrity="sha512-yQ1bYpJrX6pD2k8r8c+o1r3Zq4qj4Yl3p3XzT7kq0QxJmW1a1KQ8LxwM8j9xJmNQe8y4l6gNn6dO3nQ8s3g2xw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../static/css/styles.css">
+  </head>
+  <body>
+    <div class="bg-orb orb-1"></div>
+    <div class="bg-orb orb-2"></div>
+    <div class="bg-orb orb-3"></div>
+
+    <header class="position-sticky top-0 z-3 shadow-none bg-translucent backdrop-blur-sm">
+         <nav class="navbar navbar-expand-lg py-3">
+        <div class="container-xxl">
+          <a class="navbar-brand d-flex align-items-center gap-2" href="{% url 'home' %}">
+            <span class="brand-mark rounded-3 d-inline-flex align-items-center justify-content-center">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2L20 7V17L12 22L4 17V7L12 2Z" fill="currentColor"/></svg>
+            </span>
+            <span class="fw-semibold">techSpot</span>
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="mainNav">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center gap-lg-2">
+              <li class="nav-item"><a class="nav-link" href="#new">New</a></li>
+              <li class="nav-item"><a class="nav-link" href="#trending">Trending</a></li>
+              <li class="nav-item"><a class="nav-link" href="#categories">Categories</a></li>
+              <li class="nav-item"><a class="nav-link" href="#newsletter">Newsletter</a></li>
+              <li class="nav-item"><a class="nav-link" href="{% url 'shop' %}">Shop</a></li>
+              <li class="nav-item"><a class="nav-link" href="{% url 'cart' %}">Cart</a></li>
+              <li class="nav-item"><a class="nav-link" href="{% url 'profile' %}">Profile</a></li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">More</a>
+                <ul class="dropdown-menu dropdown-menu-end rounded-4 overflow-hidden">
+                  <li><a class="dropdown-item" href="#products">Products</a></li>
+                  <li><a class="dropdown-item" href="#testimonials">Testimonials</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="#footer">Support</a></li>
+                </ul>
+              </li>
+              <li class="nav-item ms-lg-2">
+                <button id="themeToggle" class="btn btn-outline-light rounded-pill px-3 py-2 d-flex align-items-center gap-2">
+                  <i class="fa-solid fa-moon theme-icon" aria-hidden="true"></i>
+                  <span class="d-none d-sm-inline">Dark</span>
+                </button>
+              </li>
+              <li class="nav-item ms-lg-1">
+                <a class="btn btn-primary rounded-pill px-3 py-2" href="{% url 'shop' %}">Shop</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="py-5 py-lg-6">
+        <div class="container-xxl">
+          <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 mb-4">
+            <div>
+              <div class="text-gradient mb-1">Your bag</div>
+              <h1 class="h3 fw-extrabold m-0">Cart</h1>
+            </div>
+            <a href="shop.html" class="btn btn-outline-light rounded-pill"><i class="fa-solid fa-arrow-left me-2"></i>Continue shopping</a>
+          </div>
+
+          <div class="row g-4">
+            <div class="col-12 col-lg-8">
+              <div class="card rounded-4 p-3 p-md-4">
+                <div class="d-flex align-items-center justify-content-between mb-3">
+                  <div class="fw-semibold">Items</div>
+                  <div class="text-secondary-contrast small"><span id="cartCount">0</span> products</div>
+                </div>
+                <div class="d-grid gap-3" id="cartItems">
+                  <!-- Sample items -->
+                  <div class="cart-item d-flex gap-3 align-items-center" data-price="1299">
+                    <div class="ratio ratio-1x1" style="width:84px;">
+                      <img class="rounded-3 object-fit-cover" src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?q=80&w=800&auto=format&fit=crop" alt="Nebula Pro 14”">
+                    </div>
+                    <div class="flex-grow-1">
+                      <div class="d-flex justify-content-between align-items-start">
+                        <div>
+                          <div class="fw-semibold">Nebula Pro 14”</div>
+                          <div class="text-secondary-contrast small">M2 • 16GB • 1TB</div>
+                        </div>
+                        <button class="btn btn-outline-light btn-sm rounded-pill cart-remove"><i class="fa-solid fa-xmark"></i></button>
+                      </div>
+                      <div class="d-flex align-items-center justify-content-between mt-2">
+                        <div class="d-inline-flex align-items-center border rounded-pill" style="border-color: var(--border);">
+                          <button class="btn btn-sm px-3 py-2 cart-qty-dec" aria-label="Decrease">−</button>
+                          <input class="form-control form-control-sm text-center border-0" style="width:60px;background:transparent;" type="number" min="1" value="1">
+                          <button class="btn btn-sm px-3 py-2 cart-qty-inc" aria-label="Increase">+</button>
+                        </div>
+                        <div class="fw-semibold">$<span class="cart-line">1299</span></div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="cart-item d-flex gap-3 align-items-center" data-price="299">
+                    <div class="ratio ratio-1x1" style="width:84px;">
+                      <img class="rounded-3 object-fit-cover" src="https://images.unsplash.com/photo-1518444054140-9e33c6fedfac?q=80&w=800&auto=format&fit=crop" alt="Aero ANC Max">
+                    </div>
+                    <div class="flex-grow-1">
+                      <div class="d-flex justify-content-between align-items-start">
+                        <div>
+                          <div class="fw-semibold">Aero ANC Max</div>
+                          <div class="text-secondary-contrast small">Spatial • 40h</div>
+                        </div>
+                        <button class="btn btn-outline-light btn-sm rounded-pill cart-remove"><i class="fa-solid fa-xmark"></i></button>
+                      </div>
+                      <div class="d-flex align-items-center justify-content-between mt-2">
+                        <div class="d-inline-flex align-items-center border rounded-pill" style="border-color: var(--border);">
+                          <button class="btn btn-sm px-3 py-2 cart-qty-dec" aria-label="Decrease">−</button>
+                          <input class="form-control form-control-sm text-center border-0" style="width:60px;background:transparent;" type="number" min="1" value="2">
+                          <button class="btn btn-sm px-3 py-2 cart-qty-inc" aria-label="Increase">+</button>
+                        </div>
+                        <div class="fw-semibold">$<span class="cart-line">598</span></div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12 col-lg-4">
+              <div class="card rounded-4 p-3 p-md-4">
+                <div class="fw-semibold mb-3">Order summary</div>
+                <div class="d-flex justify-content-between mb-2"><span class="text-secondary-contrast">Subtotal</span><span>$<span id="cartSubtotal">0</span></span></div>
+                <div class="d-flex justify-content-between mb-2"><span class="text-secondary-contrast">Shipping</span><span id="cartShipping">Free</span></div>
+                <div class="d-flex justify-content-between mb-3"><span class="text-secondary-contrast">Discount</span><span>−$<span id="cartDiscount">0</span></span></div>
+                <div class="border-top pt-3 d-flex justify-content-between fw-semibold mb-3"><span>Total</span><span>$<span id="cartTotal">0</span></span></div>
+
+                <form class="d-flex gap-2 mb-3" onsubmit="event.preventDefault();">
+                  <input id="promoCode" class="form-control rounded-pill" placeholder="Promo code (try SAVE10)">
+                  <button id="applyPromo" class="btn btn-outline-light rounded-pill" type="button">Apply</button>
+                </form>
+                <div id="promoMsg" class="small text-secondary-contrast mb-3"></div>
+
+                <button class="btn btn-primary w-100 rounded-pill py-2">Checkout</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="py-5 mt-4 border-top border-light-subtle">
+      <div class="container-xxl">
+        <div class="row g-4">
+          <div class="col-12 col-md-6 col-lg-4">
+            <div class="d-flex align-items-center gap-2 mb-2">
+              <span class="brand-mark rounded-3 d-inline-flex align-items-center justify-content-center">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2L20 7V17L12 22L4 17V7L12 2Z" fill="currentColor"/></svg>
+              </span>
+              <span class="fw-semibold">techSpot</span>
+            </div>
+            <div class="text-secondary-contrast small">Softly dark, effortlessly modern. © <span id="year"></span></div>
+          </div>
+          <div class="col-6 col-lg-2">
+            <div class="fw-semibold mb-2">Shop</div>
+            <ul class="list-unstyled text-secondary-contrast small d-grid gap-1 m-0">
+              <li><a class="link-light text-decoration-none" href="shop.html">Catalog</a></li>
+              <li><a class="link-light text-decoration-none" href="index.html#trending">Trending</a></li>
+            </ul>
+          </div>
+          <div class="col-6 col-lg-2">
+            <div class="fw-semibold mb-2">Support</div>
+            <ul class="list-unstyled text-secondary-contrast small d-grid gap-1 m-0">
+              <li><a class="link-light text-decoration-none" href="#">Help Center</a></li>
+              <li><a class="link-light text-decoration-none" href="#">Returns</a></li>
+            </ul>
+          </div>
+          <div class="col-12 col-lg-4">
+            <div class="fw-semibold mb-2">Get the latest</div>
+            <form class="d-flex gap-2" onsubmit="event.preventDefault(); alert('Thanks for subscribing!');">
+              <input type="email" class="form-control rounded-pill" placeholder="Email address" required>
+              <button class="btn btn-outline-light rounded-pill px-3" type="submit">Join</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="../../static/js/app.js"></script>
+    <!-- Chicku chatbot UI -->
+    <button id="chickuLauncher" class="chicku-launcher"><i class="fa-solid fa-robot"></i><span class="d-none d-sm-inline">Chat with Chicku</span></button>
+    <div id="chickuPanel" class="chicku-panel" aria-hidden="true" role="dialog" aria-modal="true">
+      <div class="chicku-header">
+        <strong>Chicku</strong>
+        <button id="chickuClose" class="btn btn-outline-light btn-sm rounded-pill"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div id="chickuBody" class="chicku-body">
+        <div class="chicku-msg bot">Hi! I’m Chicku. Ask me anything about our catalog.</div>
+      </div>
+      <form id="chickuForm" class="chicku-input d-flex gap-2" onsubmit="event.preventDefault();">
+        <input id="chickuInput" class="form-control rounded-pill" placeholder="Type a message...">
+        <button class="btn btn-primary rounded-pill" type="submit">Send</button>
+      </form>
+    </div>
+  </body>
+  </html>
+
+
