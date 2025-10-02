@@ -6,6 +6,8 @@ from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 from .models import Products
 import json
+from decimal import Decimal, InvalidOperation
+from django.db import transaction
 
 # Create your views here.
 def register(request):
@@ -54,9 +56,9 @@ def profile(request):
 # Products CRUD ENDPOINTS
 
 def add_bulk_products(request):
-    if request.method == "GET":
-        # 20 sample products
-        sample_products = [
+  if request.method == "GET":
+    # 20 sample products
+    sample_products = [
   {
     "name": "Smart Coffee Maker X10",
     "price": 229.99,
@@ -199,10 +201,42 @@ def add_bulk_products(request):
   }
 ]
        
-        for sample_product in sample_products:
-            query = Products(name = sample_product.name,price= sample_product.price,specs = sample_product.specs,desc = sample_product.desc)
-            query.save()
-        return JsonResponse({"message":"20 products saved"})
+    instances = []
+    for sample_product in sample_products:
+      # Ensure we store the price precisely as a string with two decimal places
+      price_val = sample_product.get('price')
+      price_str = None
+      try:
+        # Use Decimal(str(...)) to avoid floating-point representation issues
+        price_str = str(Decimal(str(price_val)).quantize(Decimal('0.01')))
+      except (InvalidOperation, TypeError, ValueError):
+        # Fallback to string conversion if something unexpected is provided
+        price_str = str(price_val)
+
+      img_val = sample_product.get('img')
+
+      prod = Products(
+        name=sample_product.get('name') or '',
+        price=price_str,
+        specs=sample_product.get('specs') or '',
+        desc=sample_product.get('desc') or '',
+        img=img_val or None,
+      )
+      instances.append(prod)
+
+    # Save all instances atomically for consistency
+    with transaction.atomic():
+      Products.objects.bulk_create(instances)
+
+    return JsonResponse({"message": f"{len(instances)} products saved"})
+
+
+def product_detail(request, id):
+  try:
+    product = Products.objects.get(id=id)
+  except Products.DoesNotExist:
+    return JsonResponse({'error': 'Product not found'}, status=404)
+  return render(request, 'main/product_detail.html', {'product': product})
         
 
 

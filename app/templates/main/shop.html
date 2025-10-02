@@ -27,55 +27,46 @@
   <div class="bg-orb orb-3"></div>
 
   <header class="position-sticky top-0 z-3 shadow-none bg-translucent backdrop-blur-sm">
-    <nav class="navbar navbar-expand-lg py-3">
-      <div class="container-xxl">
-        <a class="navbar-brand d-flex align-items-center gap-2" href="{% url 'home' %}">
-          <span class="brand-mark rounded-3 d-inline-flex align-items-center justify-content-center">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M12 2L20 7V17L12 22L4 17V7L12 2Z" fill="currentColor" />
-            </svg>
-          </span>
-          <span class="fw-semibold">techSpot</span>
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
-          aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="mainNav">
-          <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center gap-lg-2">
-            <li class="nav-item"><a class="nav-link" href="#new">New</a></li>
-            <li class="nav-item"><a class="nav-link" href="#trending">Trending</a></li>
-            <li class="nav-item"><a class="nav-link" href="#categories">Categories</a></li>
-            <li class="nav-item"><a class="nav-link" href="#newsletter">Newsletter</a></li>
-            <li class="nav-item"><a class="nav-link" href="{% url 'shop' %}">Shop</a></li>
-            <li class="nav-item"><a class="nav-link" href="{% url 'cart' %}">Cart</a></li>
-            <li class="nav-item"><a class="nav-link" href="{% url 'profile' %}">Profile</a></li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                aria-expanded="false">More</a>
-              <ul class="dropdown-menu dropdown-menu-end rounded-4 overflow-hidden">
-                <li><a class="dropdown-item" href="#products">Products</a></li>
-                <li><a class="dropdown-item" href="#testimonials">Testimonials</a></li>
-                <li>
-                  <hr class="dropdown-divider">
-                </li>
-                <li><a class="dropdown-item" href="#footer">Support</a></li>
-              </ul>
-            </li>
-            <li class="nav-item ms-lg-2">
-              <button id="themeToggle"
-                class="btn btn-outline-light rounded-pill px-3 py-2 d-flex align-items-center gap-2">
-                <i class="fa-solid fa-moon theme-icon" aria-hidden="true"></i>
-                <span class="d-none d-sm-inline">Dark</span>
-              </button>
-            </li>
-            <li class="nav-item ms-lg-1">
-              <a class="btn btn-primary rounded-pill px-3 py-2" href="{% url 'shop' %}">Shop</a>
-            </li>
-          </ul>
+      <nav class="navbar navbar-expand-lg py-3">
+        <div class="container-xxl">
+          <a class="navbar-brand d-flex align-items-center gap-2" href="{% url 'home' %}">
+            <span class="brand-mark rounded-3 d-inline-flex align-items-center justify-content-center">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2L20 7V17L12 22L4 17V7L12 2Z" fill="currentColor"/></svg>
+            </span>
+            <span class="fw-semibold">techSpot</span>
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="mainNav">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center gap-lg-2">
+              <li class="nav-item"><a class="nav-link" href="#trending">Trending</a></li>
+              <li class="nav-item"><a class="nav-link" href="#newsletter">Newsletter</a></li>
+              <li class="nav-item"><a class="nav-link" href="{% url 'shop' %}">Shop</a></li>
+              <li class="nav-item"><a class="nav-link" href="{% url 'cart' %}">Cart</a></li>
+              <li class="nav-item"><a class="nav-link" href="{% url 'profile' %}">Profile</a></li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">More</a>
+                <ul class="dropdown-menu dropdown-menu-end rounded-4 overflow-hidden">
+                  <li><a class="dropdown-item" href="#products">Products</a></li>
+                  <li><a class="dropdown-item" href="#testimonials">Testimonials</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="#footer">Support</a></li>
+                </ul>
+              </li>
+              <li class="nav-item ms-lg-2">
+                <button id="themeToggle" class="btn btn-outline-light rounded-pill px-3 py-2 d-flex align-items-center gap-2">
+                  <i class="fa-solid fa-moon theme-icon" aria-hidden="true"></i>
+                  <span class="d-none d-sm-inline">Dark</span>
+                </button>
+              </li>
+              <li class="nav-item ms-lg-1">
+                <a class="btn btn-primary rounded-pill px-3 py-2" href="{% url 'shop' %}">Shop</a>
+              </li>
+            </ul>
+          </div>
         </div>
-      </div>
-    </nav>
+      </nav>
   </header>
 
   <main>
@@ -98,25 +89,11 @@
           </form>
         </div>
 
-        <div class="d-flex flex-wrap gap-2 mb-4" id="catalogFilters">
-          <button class="btn btn-outline-light btn-sm rounded-pill active" data-filter="all">All</button>
-          <button class="btn btn-outline-light btn-sm rounded-pill" data-filter="laptops"><i
-              class="fa-solid fa-laptop me-2"></i>Laptops</button>
-          <button class="btn btn-outline-light btn-sm rounded-pill" data-filter="audio"><i
-              class="fa-solid fa-headphones me-2"></i>Audio</button>
-          <button class="btn btn-outline-light btn-sm rounded-pill" data-filter="wearables"><i
-              class="fa-solid fa-clock me-2"></i>Wearables</button>
-          <button class="btn btn-outline-light btn-sm rounded-pill" data-filter="monitors"><i
-              class="fa-solid fa-display me-2"></i>Monitors</button>
-        </div>
-
         <div class="row g-3 g-lg-4" id="catalog">
           {% for q in data %}
-
-
-
           <!-- 1 -->
           <div class="col-6 col-md-4 col-lg-3" data-category="laptops" data-price="1299" data-new="true">
+           <a href="{% url 'product_detail' q.id %}">
             <div class="card product-card rounded-4 overflow-hidden reveal-up">
               <div class="product-media ratio ratio-4x3">
                 <img src="{{q.img}}"
@@ -140,6 +117,7 @@
                 </div>
               </div>
             </div>
+            </a>
           </div>
           {% endfor %}
         </div>
